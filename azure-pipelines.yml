@@ -29,7 +29,7 @@ steps:
         -t $(TESTPLAN) \
         -l $(RESULTS_DIR)/results.jtl \
         -j $(RESULTS_DIR)/jmeter.log \
-        -Jjmeter.save.saveservice.output_format=xml \
+        -Jjmeter.save.saveservice.output_format=csv \
         -Jjmeter.reportgenerator.overall_granularity=1000 \
         -e -o $(REPORT_DIR)
     displayName: 'Run JMeter (non-GUI) and generate HTML report'

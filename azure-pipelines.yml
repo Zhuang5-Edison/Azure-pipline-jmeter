@@ -29,7 +29,7 @@ steps:
         -t $(TESTPLAN) \
         -l $(RESULTS_DIR)/results.jtl \
         -j $(RESULTS_DIR)/jmeter.log \
-        -Jjmeter.save.saveservice.output_format=csv \
+        -Jjmeter.save.saveservice.output_format=xml \
         -Jjmeter.reportgenerator.overall_granularity=1000 \
         -e -o $(REPORT_DIR)
     displayName: 'Run JMeter (non-GUI) and generate HTML report'
@@ -37,8 +37,11 @@ steps:
     # 该做法与社区示例一致。[1](https://github.com/testsmith-io/example-jmeter-azure-devops-integration/blob/master/azure-pipelines.yml)[4](https://www.testsmith.io/en/blog/integrate-jmeter-performance-tests-with-azure-devops-controlled-by-an-azure-pipeline)
   # 3) 将 JTL 转换为 JUnit XML，方便 PublishTestResults 在 Tests 页签展示
   - script: |
-      python jtl_junit_converter.py results/results.jtl results/TEST-jmeter.xml
-    displayName: 'Convert JTL (CSV) → JUnit XML'
+      set -eux
+      python jtl_junit_converter.py \
+        $(RESULTS_DIR)/results.jtl \
+        $(RESULTS_DIR)/TEST-jmeter.xml
+    displayName: 'Convert JTL (XML) → JUnit XML'
 
   # 4) 发布测试结果（Tests 标签可见）
   - task: PublishTestResults@2

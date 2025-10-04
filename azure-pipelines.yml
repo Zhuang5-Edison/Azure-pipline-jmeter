@@ -7,7 +7,7 @@ pool:
 
 variables:
   JMETER_VERSION: '5.6.3'                # 如需固定版本可改这里
-  TESTPLAN: 'jmeter/testplans/mms.uat.exyte.net.jmx'
+  TESTPLAN: 'mms.uat.exyte.net.jmx'
   RESULTS_DIR: 'results'
   REPORT_DIR: 'report'
 

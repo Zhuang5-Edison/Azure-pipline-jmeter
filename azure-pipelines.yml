@@ -24,7 +24,7 @@ steps:
     apache-jmeter-$(JMETER_VERSION)/bin/jmeter \
       -n \
       -t $(TESTPLAN) \
-      -l $(RESULTS_DIR)/results.jtl \
+      -l $(RESULTS_DIR)/results.csv \
       -j $(RESULTS_DIR)/jmeter.log \
       -Jjmeter.save.saveservice.output_format=csv \
       -Jjmeter.reportgenerator.overall_granularity=1000 \
